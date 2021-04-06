@@ -1,13 +1,27 @@
-import "./App.css";
+import React from "react";
+import { Grommet, ResponsiveContext } from "grommet";
 
-function App() {
+import Home from "./components/home.component";
+
+const theme = {
+  global: {
+    colors: {
+      brand: "#282c34",
+    },
+    font: {
+      family: "Roboto",
+      size: "18px",
+      height: "20px",
+    },
+  },
+};
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>Nulithic</p>
-      </header>
-    </div>
+    <Grommet theme={theme} full>
+      <ResponsiveContext.Consumer>{(size) => <Home size={size} />}</ResponsiveContext.Consumer>
+    </Grommet>
   );
-}
+};
 
 export default App;
