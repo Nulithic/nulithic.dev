@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Grommet, ResponsiveContext, Box, Button, Heading, Layer } from "grommet";
+import { Grommet, ResponsiveContext, Box, Button, Heading, Layer, Grid, Card, CardBody, Text } from "grommet";
 import { Menu, Moon, Close } from "grommet-icons";
 
 import APITest from "./components/apiTest.component";
@@ -36,13 +36,62 @@ const AppBar = (props) => (
   />
 );
 
-const AppMenu = (props) => (
-  <Layer full="true">
-    <Box tag="header" direction="row" align="center" justify="end" pad={{ left: "medium", right: "small", vertical: "small" }}>
-      <Button icon={<Close />} onClick={() => props.setShow(!props.show)} />
-    </Box>
-  </Layer>
-);
+const AppMenu = (props) => {
+  console.log(props.size, window.innerWidth);
+
+  const arrComp = ["component", "component", "component", "component", "component", "component", "component", "component", "component", "component", "component", "component"];
+
+  const arrGen = (val) => {
+    let arr = [];
+    for (let i = 0; i < val; i++) {
+      arr.push("auto");
+    }
+    return arr;
+  };
+
+  const colGen = () => {
+    let calColumns = arrComp.length * 192;
+
+    if (props.size === "small") {
+      return arrGen(1);
+    } else if (props.size === "medium") {
+      return arrGen(3);
+    } else if (props.size === "large") {
+      return arrGen(9);
+    }
+  };
+
+  console.log(colGen());
+
+  return (
+    <Layer full>
+      <Box tag="header" direction="row" align="center" justify="end" pad={{ left: "medium", right: "small", vertical: "small" }}>
+        <Button icon={<Close />} onClick={() => props.setShow(!props.show)} />
+      </Box>
+      <Box overflow="auto">
+        <Grid pad="small" rows={["auto"]} columns={colGen()} gap="small" justify="center">
+          {arrComp.map((value, i) => (
+            <Box key={i}>
+              <Card align="center" justify="center" height="small" width="small" background="light-1">
+                <CardBody
+                  fill
+                  justify="center"
+                  align="center"
+                  pad="medium"
+                  onClick={() => {
+                    console.log("hello");
+                  }}
+                >
+                  <Text>APITest</Text>
+                </CardBody>
+              </Card>
+            </Box>
+          ))}
+        </Grid>
+      </Box>
+    </Layer>
+  );
+};
 
 const App = () => {
   const [dark, setDark] = useState(false);
@@ -51,7 +100,7 @@ const App = () => {
   return (
     <Grommet theme={theme} full themeMode={dark ? "dark" : "light"}>
       <ResponsiveContext.Consumer>
-        {() => (
+        {(size) => (
           <Box fill>
             <AppBar dark={dark}>
               <Button
@@ -71,9 +120,9 @@ const App = () => {
               />
             </AppBar>
             <Box flex direction="row" align="center" justify="center" overflow={{ horizontal: "hidden" }}>
-              <APITest />
+              Home Screen
             </Box>
-            {show && <AppMenu show={show} setShow={setShow} />}
+            {show && <AppMenu show={show} setShow={setShow} size={size} />}
           </Box>
         )}
       </ResponsiveContext.Consumer>
