@@ -1,6 +1,12 @@
 [build]
   functions = "functions"
 
+[build.environment]
+  GENERATE_SOURCEMAP = "true"
+
+[build.production.environment]
+  GENERATE_SOURCEMAP = "false"
+
 [[redirects]]
  from = "/api/*"
  to = "/.netlify/functions/:splat"
