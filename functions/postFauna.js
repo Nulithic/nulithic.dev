@@ -5,7 +5,7 @@ const serverClient = new faunadb.Client({ secret: process.env.REACT_APP_FAUNADB_
 
 exports.handler = async (event) => {
   const postData = JSON.parse(event.body);
-  if (postData.password === "Nulithic") {
+  if (postData.password === process.env.REACT_APP_APITEST_SECRET) {
     try {
       const req = await serverClient.query(q.Create(q.Collection("APITest"), { data: postData }));
       return { statusCode: 200, body: JSON.stringify([req.data]) };
