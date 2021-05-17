@@ -1,6 +1,16 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Grid, Button, TextField, Paper, Typography } from "@material-ui/core";
+import {
+  Grid,
+  Button,
+  TextField,
+  Paper,
+  Typography,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+} from "@material-ui/core";
 
 import { getSimple, getFauna } from "../routes/getData";
 import { postSimple, postFauna } from "../routes/postData";
@@ -29,8 +39,43 @@ const useStyles = makeStyles((theme) => ({
 const APITest = () => {
   const classes = useStyles();
 
-  const [data, setData] = useState({ firstData: "", secondData: "" });
+  const [data, setData] = useState({ firstData: "", secondData: "", password: "" });
   const [message, setMessage] = useState([]);
+  const [dialog, setDialog] = useState(false);
+
+  const handleDialog = () => {
+    setDialog(!dialog);
+  };
+
+  const postDialog = (
+    <Dialog open={dialog} onClose={handleDialog}>
+      <DialogTitle id="form-dialog-title">Password</DialogTitle>
+      <DialogContent>
+        <TextField
+          autoFocus
+          margin="dense"
+          type="password"
+          fullWidth
+          value={data.password}
+          onChange={(e) => setData({ ...data, password: e.target.value })}
+        />
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={handleDialog} color="secondary">
+          Cancel
+        </Button>
+        <Button
+          onClick={async () => {
+            handleDialog();
+            setMessage(await postFauna(data));
+          }}
+          color="primary"
+        >
+          Post
+        </Button>
+      </DialogActions>
+    </Dialog>
+  );
 
   return (
     <div className={classes.root}>
@@ -98,7 +143,7 @@ const APITest = () => {
                   variant="contained"
                   color="secondary"
                   style={{ whiteSpace: "nowrap" }}
-                  onClick={async () => setMessage(await postFauna(data))}
+                  onClick={handleDialog}
                   fullWidth
                 >
                   Post Fauna
@@ -107,6 +152,8 @@ const APITest = () => {
             </Grid>
           </Paper>
         </Grid>
+
+        {postDialog}
 
         <Grid item xs={12}>
           <Paper className={classes.paper}>
