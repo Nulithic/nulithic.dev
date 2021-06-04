@@ -2,7 +2,11 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Drawer, List, ListItem, ListItemText } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 
-const components = ["Home", "APITest"];
+const pages = [
+  { Page: "Home", Name: "Home" },
+  { Page: "APITest", Name: "API Test" },
+  { Page: "EightBall", Name: "Eight Ball" },
+];
 
 const useStyles = makeStyles(() => ({
   listMenu: {
@@ -19,17 +23,17 @@ const Sidebar = (props) => {
     <Drawer anchor={"left"} open={showSidebar} onClose={toggleDrawer}>
       <div className={classes.listMenu} onClick={toggleDrawer} onKeyDown={toggleDrawer}>
         <List>
-          {components.map((text, index) => (
+          {pages.map((text, index) => (
             <ListItem
               button
               key={index}
               onClick={() => {
-                if (text === "Home") {
+                if (text.Page === "Home") {
                   history.push("/");
-                } else history.push(`/${text}`);
+                } else history.push(`/${text.Page}`);
               }}
             >
-              <ListItemText primary={text} />
+              <ListItemText primary={text.Name} />
             </ListItem>
           ))}
         </List>

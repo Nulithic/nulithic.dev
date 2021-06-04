@@ -17,6 +17,7 @@ import { postSimple, postFauna } from "../routes/postData";
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    flex: 1,
     textAlign: "center",
     maxWidth: 500,
   },

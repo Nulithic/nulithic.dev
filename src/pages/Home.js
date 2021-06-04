@@ -13,7 +13,7 @@ const Home = () => {
   return (
     <div className={classes.root}>
       <Grid container justify="center">
-        <Typography>Home Screen</Typography>
+        <Typography>Just figuring out life...</Typography>
       </Grid>
     </div>
   );

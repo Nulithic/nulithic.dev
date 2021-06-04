@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { AppBar, Toolbar, Typography, IconButton } from "@material-ui/core";
+import { AppBar, Toolbar, Typography, IconButton, useScrollTrigger, Slide } from "@material-ui/core";
 import { Menu, Brightness4, Brightness7 } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
@@ -11,6 +11,17 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
 }));
+
+const HideNav = (props) => {
+  const { children } = props;
+  const trigger = useScrollTrigger();
+
+  return (
+    <Slide appear={false} direction="down" in={!trigger}>
+      {children}
+    </Slide>
+  );
+};
 
 const Navbar = (props) => {
   const { theme, setTheme, toggleDrawer } = props;
@@ -27,32 +38,34 @@ const Navbar = (props) => {
   }, [setTheme, theme]);
 
   return (
-    <AppBar position="sticky">
-      <Toolbar>
-        <IconButton
-          edge="start"
-          className={classes.menuButton}
-          color="inherit"
-          onClick={(event) => toggleDrawer(event)}
-        >
-          <Menu />
-        </IconButton>
-        <Typography variant="h6" className={classes.title}>
-          Nulithic
-        </Typography>
-        <IconButton
-          edge="end"
-          color="inherit"
-          aria-label="menu"
-          onClick={() => {
-            setTheme(!theme);
-            localStorage["theme"] = !theme;
-          }}
-        >
-          {iconTheme}
-        </IconButton>
-      </Toolbar>
-    </AppBar>
+    <HideNav {...props}>
+      <AppBar>
+        <Toolbar>
+          <IconButton
+            edge="start"
+            className={classes.menuButton}
+            color="inherit"
+            onClick={(event) => toggleDrawer(event)}
+          >
+            <Menu />
+          </IconButton>
+          <Typography variant="h6" className={classes.title}>
+            Nulithic
+          </Typography>
+          <IconButton
+            edge="end"
+            color="inherit"
+            aria-label="menu"
+            onClick={() => {
+              setTheme(!theme);
+              localStorage["theme"] = !theme;
+            }}
+          >
+            {iconTheme}
+          </IconButton>
+        </Toolbar>
+      </AppBar>
+    </HideNav>
   );
 };
 

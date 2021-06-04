@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { CssBaseline, Grid } from "@material-ui/core";
+import { CssBaseline, Grid, Toolbar } from "@material-ui/core";
 import {
   unstable_createMuiStrictModeTheme as createMuiTheme,
   MuiThemeProvider,
@@ -11,12 +11,7 @@ import Sidebar from "./Sidebar";
 
 const useStyles = makeStyles(() => ({
   root: {
-    flexGrow: 1,
-  },
-  mainGrid: {
-    overflowY: "auto",
-    height: "calc(100vh - 64px)",
-    maxWidth: "100%",
+    flex: 1,
   },
 }));
 
@@ -58,7 +53,8 @@ const Layout = ({ children }) => {
       <div className={classes.root}>
         <Navbar theme={theme} setTheme={setTheme} toggleDrawer={toggleDrawer} />
         <Sidebar showSidebar={showSidebar} toggleDrawer={toggleDrawer} />
-        <Grid container justify="center" alignItems="center" className={classes.mainGrid}>
+        <Toolbar />
+        <Grid container justify="center" alignItems="center">
           {children}
         </Grid>
       </div>
