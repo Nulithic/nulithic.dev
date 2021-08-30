@@ -1,12 +1,12 @@
 import { Box, Text } from "@chakra-ui/react";
 import React from "react";
 
-const Home = () => {
+const Contact = () => {
   return (
     <Box color="white">
-      <Text>{"Home :)"}</Text>
+      <Text>{"Contact :)"}</Text>
     </Box>
   );
 };
 
-export default Home;
+export default Contact;

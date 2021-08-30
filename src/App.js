@@ -3,8 +3,11 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
-import APITest from "./pages/APITest";
-import EightBall from "./pages/EightBall";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Projects from "./pages/Projects";
+import APITest from "./projects/APITest";
+import EightBall from "./projects/EightBall";
 
 const App = () => {
   return (
@@ -12,8 +15,11 @@ const App = () => {
       <Layout>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/APITest" component={APITest} />
-          <Route path="/EightBall" component={EightBall} />
+          <Route path="/About" component={About} />
+          <Route path="/Contact" component={Contact} />
+          <Route exact path="/Projects" component={Projects} />
+          <Route path="/Projects/APITest" component={APITest} />
+          <Route path="/projects/EightBall" component={EightBall} />
         </Switch>
       </Layout>
     </BrowserRouter>
