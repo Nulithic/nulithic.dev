@@ -2,4 +2,4 @@
 
 🤔
 
-Just a place for my stupid ideas.
+Just a place for my ideas.

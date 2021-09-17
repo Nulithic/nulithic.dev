@@ -25,7 +25,7 @@ const Navbar = ({ body }) => {
     return (
       <Link href="/">
         <Stack direction="row">
-          <Image borderRadius="full" boxSize="45px" src={LogoIcon} alt="Nulithic" />
+          <Image borderRadius="full" boxSize="45px" src={LogoIcon} />
           <Text fontSize="3xl" fontWeight="bold">
             Nulithic
           </Text>
@@ -70,7 +70,6 @@ const Navbar = ({ body }) => {
         justify="space-between"
         wrap="wrap"
         w="100%"
-        mb={8}
         p={4}
         bg={bg}
         color={color}

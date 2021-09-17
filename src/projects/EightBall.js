@@ -1,4 +1,4 @@
-import { Box, Button, Center, Heading, Stack, Text } from "@chakra-ui/react";
+import { useColorModeValue, Box, Button, Center, Flex, Heading, Stack, Text } from "@chakra-ui/react";
 import React, { useState } from "react";
 
 const answers = [
@@ -25,6 +25,8 @@ const answers = [
 ];
 
 const EightBall = () => {
+  const color = useColorModeValue("black", "white");
+
   const [answer, setAnswer] = useState("");
 
   const randomGen = () => {
@@ -44,19 +46,23 @@ const EightBall = () => {
   };
 
   return (
-    <Stack>
-      <BoxFrame>
-        <Stack>
-          <Center>
-            <Heading>Eight Ball</Heading>
-          </Center>
-          <Button onClick={handleShake}>Shake</Button>
-          <Center>
-            <Text>{answer}</Text>
-          </Center>
-        </Stack>
-      </BoxFrame>
-    </Stack>
+    <Flex h="full" alignItems="center" justifyContent="center">
+      <Stack>
+        <BoxFrame>
+          <Stack>
+            <Center>
+              <Heading>Eight Ball</Heading>
+            </Center>
+            <Button color={color} onClick={handleShake}>
+              Shake
+            </Button>
+            <Center>
+              <Text>{answer}</Text>
+            </Center>
+          </Stack>
+        </BoxFrame>
+      </Stack>
+    </Flex>
   );
 };
 

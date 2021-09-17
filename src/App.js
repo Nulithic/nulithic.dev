@@ -8,6 +8,7 @@ import Contact from "./pages/Contact";
 import Projects from "./pages/Projects";
 import APITest from "./projects/APITest";
 import EightBall from "./projects/EightBall";
+import Clock from "./projects/Clock";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
           <Route exact path="/Projects" component={Projects} />
           <Route path="/Projects/APITest" component={APITest} />
           <Route path="/projects/EightBall" component={EightBall} />
+          <Route path="/projects/Clock" component={Clock} />
         </Switch>
       </Layout>
     </BrowserRouter>

@@ -1,11 +1,13 @@
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Flex, Text } from "@chakra-ui/react";
 import React from "react";
 
 const About = () => {
   return (
-    <Box color="white">
-      <Text>{"About :)"}</Text>
-    </Box>
+    <Flex h="full" alignItems="center" justifyContent="center">
+      <Box color="white">
+        <Text>{"About :)"}</Text>
+      </Box>
+    </Flex>
   );
 };
 

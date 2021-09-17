@@ -1,4 +1,4 @@
-import { Box, Heading, Text, SimpleGrid, Link } from "@chakra-ui/react";
+import { Box, Heading, Text, SimpleGrid, Link, Flex } from "@chakra-ui/react";
 import React from "react";
 
 const projects = [
@@ -24,9 +24,11 @@ const Projects = () => {
   };
 
   return (
-    <SimpleGrid columns={[1, 1, 2, 3, 4, 5]} gap={5}>
-      <ProjectList />
-    </SimpleGrid>
+    <Flex justifyContent="center">
+      <SimpleGrid columns={[1, 1, 2, 3, 4, 5]} gap={5}>
+        <ProjectList />
+      </SimpleGrid>
+    </Flex>
   );
 };
 

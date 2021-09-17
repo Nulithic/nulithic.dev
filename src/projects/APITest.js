@@ -16,6 +16,7 @@ import {
   SimpleGrid,
   Stack,
   Center,
+  Flex,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 
@@ -140,17 +141,19 @@ const APITest = () => {
   };
 
   return (
-    <Stack spacing={5}>
-      {inputArea()}
-      {postDialog()}
-      <BoxFrame>
-        <Center>
-          <Text>Data Length: {message.length}</Text>
-        </Center>
-      </BoxFrame>
+    <Flex justifyContent="center">
+      <Stack spacing={5}>
+        {inputArea()}
+        {postDialog()}
+        <BoxFrame>
+          <Center>
+            <Text>Data Length: {message.length}</Text>
+          </Center>
+        </BoxFrame>
 
-      <DisplayData />
-    </Stack>
+        <DisplayData />
+      </Stack>
+    </Flex>
   );
 };
 
