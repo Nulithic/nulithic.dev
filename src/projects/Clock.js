@@ -6,7 +6,7 @@ const Clock = () => {
   // const [currentTime, setCurrentTime] = useState("");
 
   const [firstColumn, setFirstColumn] = useState([...Array(5).fill(null)]);
-  const [secondColumn, setSecondColumn] = useState([...Array(7).fill(null)]);
+  const [secondColumn, setSecondColumn] = useState([...Array(19).fill(null)]);
   const [thirdColumn, setThirdColumn] = useState([...Array(11).fill(null)]);
   const [fourthColumn, setFourthColumn] = useState([...Array(19).fill(null)]);
   const [fifthColumn, setFifthColumn] = useState([...Array(11).fill(null)]);
@@ -34,24 +34,54 @@ const Clock = () => {
   };
 
   const handleSecond = (sec) => {
-    const secondDigit = [0, 1, 2, 3];
+    const secondDigit = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
     switch (sec) {
       case "0":
-        secondDigit.unshift(null, null, null);
+        secondDigit.unshift(null, null, null, null, null, null, null, null, null);
         setSecondColumn(secondDigit);
         break;
       case "1":
-        secondDigit.unshift(null, null);
+        secondDigit.unshift(null, null, null, null, null, null, null, null);
         secondDigit.push(null);
         setSecondColumn(secondDigit);
         break;
       case "2":
-        secondDigit.unshift(null);
-        secondDigit.push(null, null, null);
+        secondDigit.unshift(null, null, null, null, null, null, null);
+        secondDigit.push(null, null);
         setSecondColumn(secondDigit);
         break;
       case "3":
+        secondDigit.unshift(null, null, null, null, null, null);
         secondDigit.push(null, null, null);
+        setSecondColumn(secondDigit);
+        break;
+      case "4":
+        secondDigit.unshift(null, null, null, null, null);
+        secondDigit.push(null, null, null, null);
+        setSecondColumn(secondDigit);
+        break;
+      case "5":
+        secondDigit.unshift(null, null, null, null);
+        secondDigit.push(null, null, null, null, null);
+        setSecondColumn(secondDigit);
+        break;
+      case "6":
+        secondDigit.unshift(null, null, null);
+        secondDigit.push(null, null, null, null, null, null);
+        setSecondColumn(secondDigit);
+        break;
+      case "7":
+        secondDigit.unshift(null, null);
+        secondDigit.push(null, null, null, null, null, null, null);
+        setSecondColumn(secondDigit);
+        break;
+      case "8":
+        secondDigit.unshift(null);
+        secondDigit.push(null, null, null, null, null, null, null, null);
+        setSecondColumn(secondDigit);
+        break;
+      case "9":
+        secondDigit.push(null, null, null, null, null, null, null, null, null);
         setSecondColumn(secondDigit);
         break;
       default:
