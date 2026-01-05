@@ -5,7 +5,7 @@ import Layout from "@/components/layout";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Mail, Phone, MapPin, Linkedin, MessageSquare } from "lucide-react";
+import { Mail } from "lucide-react";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -138,23 +138,6 @@ export default function Contact() {
                     <h3 className="font-semibold mb-1">Email</h3>
                     <a href="mailto:contact@nulithic.dev" className="text-blue-600 dark:text-blue-400 hover:underline">
                       contact@nulithic.dev
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className="w-10 h-10 bg-purple-100 dark:bg-purple-900 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Linkedin className="w-5 h-5 text-purple-600 dark:text-purple-400" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold mb-1">LinkedIn</h3>
-                    <a
-                      href="https://linkedin.com/company/nulithic"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-blue-600 dark:text-blue-400 hover:underline"
-                    >
-                      Connect with us
                     </a>
                   </div>
                 </div>
