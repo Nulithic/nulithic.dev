@@ -1,18 +1,9 @@
 [build]
-  functions = "functions"
+  command = "npm run build"
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
 
 [build.environment]
-  GENERATE_SOURCEMAP = "true"
-
-[build.production.environment]
-  GENERATE_SOURCEMAP = "false"
-
-[[redirects]]
- from = "/api/*"
- to = "/.netlify/functions/:splat"
- status = 200
-
-[[redirects]]
- from = "/*"
- to = "/index.html"
- status = 200
+  NODE_VERSION = "20"
